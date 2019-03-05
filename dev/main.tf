@@ -13,6 +13,7 @@ module "appengine" {
   source = "../modules/appengine"
 
   project = "${var.project}"
+  project_number = "${module.project.project_number}"
 }
 
 module "cloudbuild" {

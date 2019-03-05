@@ -8,10 +8,3 @@ resource "google_project_iam_binding" "cloudbuild_kms" {
 
   members = ["serviceAccount:${data.google_project.infra.number}@cloudbuild.gserviceaccount.com"]
 }
-
-resource "google_project_iam_binding" "cloudbuild_editor" {
-  project = "${var.project}"
-  role    = "roles/editor"
-
-  members = ["serviceAccount:${data.google_project.infra.number}@cloudbuild.gserviceaccount.com"]
-}

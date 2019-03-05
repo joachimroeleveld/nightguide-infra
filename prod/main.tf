@@ -12,6 +12,7 @@ module "project" {
 module "appengine" {
   source = "../modules/appengine"
 
+  project_number = "${module.project.project_number}"
   project = "${var.project}"
 }
 
