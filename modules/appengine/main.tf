@@ -21,3 +21,10 @@ resource "google_project_iam_binding" "appengine_object_viewer" {
 
   members = ["${local.appengine_sa}"]
 }
+
+resource "google_project_iam_binding" "appengine_trace_writer" {
+  project = "${var.project}"
+  role    = "roles/cloudtrace.agent"
+
+  members = ["${local.appengine_sa}"]
+}
