@@ -3,5 +3,5 @@
 tmp/
 auth_info.tf
 
-secrets/*
-!secrets/*.enc
+**/secrets/
+!**/secrets/*.enc
