@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nightguide-infra",
+  "private_key_id": "ed8883bd47defb83d2a6e6e465654f895e7abf82",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDA4mb96AZNlq8d\nmPC+ck7/udwAWs7DQJINTdMp2PkdH1YuuWNGlx9MHOgtj6Bc4edDeBJrjxFzSRiW\nX/O4sSIF0w1mkGMbwSeefzyuPNBQoJq/YEm+8Tgar6zxJm09n+umzgCYDNMBHP0f\nZxHOP6gqedoY8xOcdY4a+XnbQNObzhM1aC9D9oAO3zgn15FXJfASKQPxoaU+nxoJ\nnWrK/F1XD4MwtytTqwzZyPKpQQCV6nNryMh6ZXkec+YbW38nQ6bRbJr5mIirFbJm\nvxEDzcG7CIJv6/rw5W6nLFpBg+ZJl5QFsNljJgy2Dzd6WUQ4x7jB4S32nzJqORrg\nxBUmtTGjAgMBAAECggEANli0Py88c2kVDyhUEL0BcEFMcRck8dPEMxZt/HkDe8ak\nEEcw5ydWbKoqawfwXatS72op+n9Vod+DG3+Omsfh97UnLfJZ0myifqCIFunQoh8W\navy02qV5st8zwcCbgAUKrzWU6kKWw1YJJetzE2NRPSKXJnd625ctwoDvai0CUoAJ\nJYsRDdrK7qJS7wMNIbshtKPFHrdVI6G1BagbilQSHXUgrzoWzk9HRT6LbGlXiyZI\nthvBEYmWr//73RcZhXuPXsColj9sExKaSGfBFVWy1PsCB9Lx8vrHwdhuZpge6UTe\nVWKFcASm0n618D/V4gO2XlmRinuUHSFcLDA7IX5akQKBgQDe/Z4Iqob7NCaRESWU\n5ZxWBsj3lWy9OqpTYZOBqtExhqJAJkn7VkG5/g2Ob3VlXJfB5zQYK2fTiDSsPw/N\nWXY0S2t67w3QaNC7+b9TlPI0PdafgvcwCSwsVdSd3YZHcRR2jDHaYUH67PQ8gU+y\np+lu+11RRHhCtnYK3PlM6JpIsQKBgQDdb+LY/AzY2wJGXvIzY2nnPZqK4ynWkYjI\nW0mayi1z17OuN0yrco0wG9HJNaHuxgjyjAo6xKSRyc+Dp+tOQSlC/pAKj4lAr0Gf\nmrM7vKnnjVIQW/hWgbRa3lyQYUQlH8K/gMM+G4C5dwLWcUmIquASQCDV02N92cUG\n6aH2i1G0kwKBgQCn5avU+JjTkausNI3oc43n1AoDKLYMMJzIVULcMgJ62NVXmbzA\nimzInvoUEeYBoNr++5dkz2HIitimDIFYa5CtxU+y60WqcxEfR+eABjjrjtgHmHOH\n7pAc/a8uAfq11fXDYMG0nOAyD7HB0NdyPC1uC8NyiixGht2QRltLRiPMsQKBgDXP\nmLrOFXklT5o2PHlMcVHmYIXbyjEAUNMPjAV3mDAMfPebLKCFR9YnDIXu6JkTutzm\nNx4s5yked7UwuzfbEeHb5rkKRHpZnILinyenI0rHxud+0gyDnIZwfuH/IQY8f6D1\n83xGRrPLPf9KrGnvzF/jAZe0tPrCTuTtJZS6KnLNAoGBAM655OVn53gQbrzv6KTw\nfx9ku3INYGcVXmzYpq7Pd1YF/0Y9khG0My00RZqdS/tBcQw3qXVUmNLgNa51yQXU\nRTWd7qJ2zJ8IYaR2ibW9v6Za1HrhkoUx34w9s2PCd1rMXCmPxFw5/5fxCxqZhj7u\nnJYj/bKUz2R5RZVt7tfzunUt\n-----END PRIVATE KEY-----\n",
+  "client_email": "joachim-deploy@nightguide-infra.iam.gserviceaccount.com",
+  "client_id": "101881914947743423663",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/joachim-deploy%40nightguide-infra.iam.gserviceaccount.com"
+}

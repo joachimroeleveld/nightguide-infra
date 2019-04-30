@@ -11,7 +11,7 @@ resource "google_storage_bucket_iam_binding" "images_public" {
 }
 
 resource "google_dns_record_set" "images" {
-  name = "${var.dns_name}"
+  name = "${var.dns_name}."
   type = "CNAME"
   ttl  = 300
 

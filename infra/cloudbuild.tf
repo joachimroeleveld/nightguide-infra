@@ -1,3 +1,8 @@
+resource "google_storage_bucket" "builds" {
+  name     = "builds.nightguide.app"
+  location = "${var.bucket_location}"
+}
+
 resource "google_sourcerepo_repository" "docker_gcloud_make" {
   name = "github_joachimroeleveld_docker-gcloud-make"
 }

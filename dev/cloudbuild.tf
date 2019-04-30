@@ -14,8 +14,10 @@ resource "google_cloudbuild_trigger" "api" {
   }
 
   substitutions = {
-    _ENV     = "${var.env}"
-    _VERSION = "override"
+    _PROJECT       = "${var.project}"
+    _ENV           = "${var.env}"
+    _IMAGE_REPO    = "${module.cloudbuild.image_repository}"
+    _BUILDS_BUCKET = "${module.cloudbuild.builds_bucket}"
   }
 
   filename = "cloudbuild-deploy.yaml"

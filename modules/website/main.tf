@@ -1,5 +1,5 @@
 resource "google_dns_record_set" "website" {
-  name = "${var.dns_name}"
+  name = "${var.dns_name}."
   type = "A"
   ttl  = 300
 
@@ -9,7 +9,7 @@ resource "google_dns_record_set" "website" {
 }
 
 resource "google_dns_record_set" "website_ipv6" {
-  name = "${var.dns_name}"
+  name = "${var.dns_name}."
   type = "AAAA"
   ttl  = 300
 
@@ -19,7 +19,7 @@ resource "google_dns_record_set" "website_ipv6" {
 }
 
 resource "google_dns_record_set" "website_www" {
-  name = "www.${var.dns_name}"
+  name = "www.${var.dns_name}."
   type = "CNAME"
   ttl  = 300
 
