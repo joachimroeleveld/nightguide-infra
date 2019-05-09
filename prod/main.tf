@@ -35,24 +35,21 @@ module "cluster_primary" {
 module "website" {
   source = "../modules/website"
 
+  env = "${var.env}"
+  helm_repository = "${module.cloudbuild.helm_repository}"
+
   dns_zone = "${google_dns_managed_zone.main.name}"
   dns_name = "${var.dns_name}"
 
-  dns_data = [
-    "216.239.32.21",
-    "216.239.34.21",
-    "216.239.36.21",
-    "216.239.38.21",
-  ]
-  dns_data_ipv6 = [
-    "2001:4860:4802:32::15",
-    "2001:4860:4802:34::15",
-    "2001:4860:4802:36::15",
-    "2001:4860:4802:38::15",
-  ]
-  dns_data_www = [
-    "ghs.googlehosted.com.",
-  ]
+  replica_count = 1
+  cpu_limit = "0.3"
+  cpu_request = "0.1"
+  memory_limit = "500M"
+  memory_request = "100M"
+
+  blog_protocol = "https"
+  blog_version = "${var.blog_version}"
+  ghost_version = "2.22-alpine"
 }
 
 module "api" {
@@ -68,7 +65,7 @@ module "api" {
   image_repository = "${module.cloudbuild.image_repository}"
   helm_repository = "${module.cloudbuild.helm_repository}"
 
-  replica_count = 2
+  replica_count = 1
   cpu_limit = "0.5"
   cpu_request = "0.1"
   memory_limit = "500M"

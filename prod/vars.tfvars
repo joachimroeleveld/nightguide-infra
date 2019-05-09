@@ -10,5 +10,6 @@ bucket_location = "EU"
 
 infra_project = "nightguide-infra"
 
-api_version = "v1.7.4"
-scrapyd_version = "v1.1.5"
+api_version = "v1.8.3"
+scrapyd_version = "v1.2.1"
+blog_version = "v1.1.3"

@@ -33,3 +33,7 @@ variable "api_version" {
 variable "scrapyd_version" {
   type = "string"
 }
+
+variable "blog_version" {
+  type = "string"
+}
