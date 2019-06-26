@@ -57,3 +57,7 @@ variable "helm_repository" {
 variable "cloudbuild_sa" {
   type = "string"
 }
+
+variable "images_bucket" {
+  type = "string"
+}

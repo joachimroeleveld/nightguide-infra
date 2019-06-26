@@ -2,10 +2,6 @@ variable "env" {
   type = "string"
 }
 
-variable "image_repository" {
-  type = "string"
-}
-
 variable "helm_repository" {
   type = "string"
 }
@@ -30,22 +26,6 @@ variable "memory_request" {
   type = "string"
 }
 
-variable "nginx_cpu_limit" {
-  type = "string"
-}
-
-variable "nginx_memory_limit" {
-  type = "string"
-}
-
-variable "nginx_cpu_request" {
-  type = "string"
-}
-
-variable "nginx_memory_request" {
-  type = "string"
-}
-
 variable "dns_name" {
   type = "string"
 }
@@ -54,18 +34,10 @@ variable "dns_zone" {
   type = "string"
 }
 
-variable "blog_protocol" {
+variable "admin_version" {
   type = "string"
 }
 
-variable "website_version" {
-  type = "string"
-}
-
-variable "blog_version" {
-  type = "string"
-}
-
-variable "ghost_version" {
+variable "image_repository" {
   type = "string"
 }

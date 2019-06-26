@@ -32,23 +32,74 @@ module "cluster_primary" {
   machine_type = "custom-2-3072" // 2vCPU + 3GB RAM
 }
 
-module "website" {
-  source = "../modules/website"
+module "blog" {
+  source = "../modules/blog"
 
   env = "${var.env}"
   helm_repository = "${module.cloudbuild.helm_repository}"
+  image_repository = "${module.cloudbuild.image_repository}"
 
   dns_zone = "${google_dns_managed_zone.main.name}"
-  dns_name = "${var.dns_name}"
+  dns_name = "blog.${var.dns_name}"
 
   replica_count = 1
   cpu_limit = "0.3"
   cpu_request = "0.1"
   memory_limit = "500M"
   memory_request = "100M"
+  mariadb_cpu_limit = "0.3"
+  mariadb_cpu_request = "0.1"
+  mariadb_memory_limit = "500M"
+  mariadb_memory_request = "100M"
 
   blog_protocol = "https"
   blog_version = "${var.blog_version}"
+
+  images_bucket = "${module.images.bucket_name}"
+}
+
+module "admin" {
+  source = "../modules/admin"
+
+  env = "${var.env}"
+  helm_repository = "${module.cloudbuild.helm_repository}"
+  image_repository = "${module.cloudbuild.image_repository}"
+
+  dns_zone = "${google_dns_managed_zone.main.name}"
+  dns_name = "admin.${var.dns_name}"
+
+  replica_count = 1
+  cpu_limit = "0.2"
+  cpu_request = "0.05"
+  memory_limit = "200M"
+  memory_request = "100M"
+
+  admin_version = "${var.admin_version}"
+}
+
+module "website" {
+  source = "../modules/website"
+
+  env = "${var.env}"
+  helm_repository = "${module.cloudbuild.helm_repository}"
+  image_repository = "${module.cloudbuild.image_repository}"
+
+  dns_zone = "${google_dns_managed_zone.main.name}"
+  dns_name = "${var.dns_name}"
+
+  replica_count = 1
+  cpu_limit = "0.5"
+  cpu_request = "0.2"
+  memory_limit = "500M"
+  memory_request = "200M"
+  nginx_cpu_limit = "0.3"
+  nginx_cpu_request = "0.1"
+  nginx_memory_limit = "300M"
+  nginx_memory_request = "100M"
+
+  website_version = "${var.website_version}"
+  blog_protocol = "https"
+  blog_version = "v1.1.3"
   ghost_version = "2.22-alpine"
 }
 
@@ -73,20 +124,21 @@ module "api" {
 
   dns_name = "api.${var.dns_name}"
   dns_zone = "${google_dns_managed_zone.main.name}"
+
+  images_bucket = "${module.images.bucket_name}"
 }
 
-module "scrapyd" {
-  source = "../modules/scrapyd"
+module "facebook_scraper" {
+  source = "../modules/facebook_scraper"
 
-  project = "${var.project}"
   env = "${var.env}"
+  project = "${var.project}"
 
-  app_version      = "${var.scrapyd_version}"
+  app_version      = "${var.facebook_scraper_version}"
   image_repository = "${module.cloudbuild.image_repository}"
   helm_repository  = "${module.cloudbuild.helm_repository}"
 
-  dns_name = "spiders.${var.dns_name}"
-  dns_zone = "${google_dns_managed_zone.main.name}"
+  scrapy_log_level = "DEBUG"
 }
 
 module "static" {

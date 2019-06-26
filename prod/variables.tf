@@ -30,10 +30,18 @@ variable "api_version" {
   type = "string"
 }
 
-variable "scrapyd_version" {
+variable "facebook_scraper_version" {
   type = "string"
 }
 
 variable "blog_version" {
+  type = "string"
+}
+
+variable "admin_version" {
+  type = "string"
+}
+
+variable "website_version" {
   type = "string"
 }

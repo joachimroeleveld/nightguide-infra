@@ -2,10 +2,6 @@ variable "env" {
   type = "string"
 }
 
-variable "image_repository" {
-  type = "string"
-}
-
 variable "helm_repository" {
   type = "string"
 }
@@ -30,19 +26,19 @@ variable "memory_request" {
   type = "string"
 }
 
-variable "nginx_cpu_limit" {
+variable "mariadb_cpu_limit" {
   type = "string"
 }
 
-variable "nginx_memory_limit" {
+variable "mariadb_memory_limit" {
   type = "string"
 }
 
-variable "nginx_cpu_request" {
+variable "mariadb_cpu_request" {
   type = "string"
 }
 
-variable "nginx_memory_request" {
+variable "mariadb_memory_request" {
   type = "string"
 }
 
@@ -58,14 +54,14 @@ variable "blog_protocol" {
   type = "string"
 }
 
-variable "website_version" {
-  type = "string"
-}
-
 variable "blog_version" {
   type = "string"
 }
 
-variable "ghost_version" {
+variable "image_repository" {
+  type = "string"
+}
+
+variable "images_bucket" {
   type = "string"
 }

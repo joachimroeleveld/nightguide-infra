@@ -12,6 +12,16 @@ resource "google_compute_managed_ssl_certificate" "website" {
   }
 }
 
+resource "google_compute_managed_ssl_certificate" "website_www" {
+  provider = "google-beta"
+
+  name = "website-www"
+
+  managed {
+    domains = ["www.${var.dns_name}"]
+  }
+}
+
 resource "google_dns_record_set" "website" {
   name = "${var.dns_name}."
   type = "A"
@@ -29,5 +39,5 @@ resource "google_dns_record_set" "website_www" {
 
   managed_zone = "${var.dns_zone}"
 
-  rrdatas = ["${google_dns_record_set.website.name}"]
+  rrdatas = ["${var.dns_name}."]
 }
