@@ -34,10 +34,6 @@ variable "facebook_scraper_version" {
   type = "string"
 }
 
-variable "blog_version" {
-  type = "string"
-}
-
 variable "admin_version" {
   type = "string"
 }

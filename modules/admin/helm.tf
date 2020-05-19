@@ -26,7 +26,7 @@ resource "helm_release" "admin" {
 
   set_string {
     name = "ingress.hosts[0].host"
-    value = "${var.dns_name}"
+    value = "${local.dns_name}"
   }
 
   set_string {

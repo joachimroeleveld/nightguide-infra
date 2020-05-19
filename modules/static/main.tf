@@ -1,3 +1,7 @@
+locals {
+  dns_name = "static.${var.dns_domain}"
+}
+
 resource "google_compute_global_address" "static" {
   name = "static"
 }
@@ -15,7 +19,7 @@ resource "google_storage_bucket_iam_binding" "static_public" {
 }
 
 resource "google_dns_record_set" "static" {
-  name = "${var.dns_name}."
+  name = "${local.dns_name}."
   type = "A"
   ttl  = 300
 
@@ -29,7 +33,7 @@ resource "google_compute_url_map" "static" {
   default_service = "${google_compute_backend_bucket.static.self_link}"
 
   host_rule = {
-    hosts        = ["${var.dns_name}"]
+    hosts        = ["${local.dns_name}"]
     path_matcher = "allpaths"
   }
 
@@ -64,6 +68,6 @@ resource "google_compute_managed_ssl_certificate" "static" {
   name = "static"
 
   managed {
-    domains = ["${var.dns_name}"]
+    domains = ["${local.dns_name}"]
   }
 }

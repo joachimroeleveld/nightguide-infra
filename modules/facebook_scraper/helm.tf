@@ -41,6 +41,7 @@ resource "kubernetes_secret" "facebook_scraper_env" {
     name = "facebook-scraper-env"
   }
 
+  // TODO: move all values back to secrets file
   data {
     "ENV" = "production"
     "NG_API_HOST" = "https://api.nightguide.app"
@@ -49,7 +50,7 @@ resource "kubernetes_secret" "facebook_scraper_env" {
     "MAIL_USER" = "apikey"
     "MAIL_PASS" = "${data.external.facebook_scraper_env.result["MAIL_PASS"]}"
     "MAIL_PORT" = "465"
-    "MAIL_HOST" = "stmp.sendgrid.net"
+    "MAIL_HOST" = "smtp.sendgrid.net"
     "MAIL_FROM" = "noreply@nightguide.app"
     "MAIL_SSL" = "True"
   }

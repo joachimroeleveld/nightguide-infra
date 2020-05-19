@@ -32,32 +32,6 @@ module "cluster_primary" {
   machine_type = "custom-2-3072" // 2vCPU + 3GB RAM
 }
 
-module "blog" {
-  source = "../modules/blog"
-
-  env = "${var.env}"
-  helm_repository = "${module.cloudbuild.helm_repository}"
-  image_repository = "${module.cloudbuild.image_repository}"
-
-  dns_zone = "${google_dns_managed_zone.main.name}"
-  dns_name = "blog.${var.dns_name}"
-
-  replica_count = 1
-  cpu_limit = "0.3"
-  cpu_request = "0.1"
-  memory_limit = "500M"
-  memory_request = "100M"
-  mariadb_cpu_limit = "0.3"
-  mariadb_cpu_request = "0.1"
-  mariadb_memory_limit = "500M"
-  mariadb_memory_request = "100M"
-
-  blog_protocol = "https"
-  blog_version = "${var.blog_version}"
-
-  images_bucket = "${module.images.bucket_name}"
-}
-
 module "admin" {
   source = "../modules/admin"
 
@@ -66,7 +40,7 @@ module "admin" {
   image_repository = "${module.cloudbuild.image_repository}"
 
   dns_zone = "${google_dns_managed_zone.main.name}"
-  dns_name = "admin.${var.dns_name}"
+  dns_domain = "${var.dns_name}"
 
   replica_count = 1
   cpu_limit = "0.2"
@@ -85,7 +59,7 @@ module "website" {
   image_repository = "${module.cloudbuild.image_repository}"
 
   dns_zone = "${google_dns_managed_zone.main.name}"
-  dns_name = "${var.dns_name}"
+  dns_domain = "${var.dns_name}"
 
   replica_count = 1
   cpu_limit = "0.5"
@@ -115,6 +89,7 @@ module "api" {
   builds_bucket = "${module.cloudbuild.builds_bucket}"
   image_repository = "${module.cloudbuild.image_repository}"
   helm_repository = "${module.cloudbuild.helm_repository}"
+  bucket_location = "${var.bucket_location}"
 
   replica_count = 1
   cpu_limit = "0.5"
@@ -122,7 +97,7 @@ module "api" {
   memory_limit = "500M"
   memory_request = "150M"
 
-  dns_name = "api.${var.dns_name}"
+  dns_domain = "${var.dns_name}"
   dns_zone = "${google_dns_managed_zone.main.name}"
 
   images_bucket = "${module.images.bucket_name}"
@@ -147,7 +122,7 @@ module "static" {
   bucket_location = "${var.bucket_location}"
   bucket_name = "static.${var.dns_name}"
 
-  dns_name = "static.${var.dns_name}"
+  dns_domain = "${var.dns_name}"
   dns_data = [
     "35.244.195.251",
   ]
@@ -160,7 +135,7 @@ module "images" {
   bucket_location = "${var.bucket_location}"
   bucket_name = "images.${var.dns_name}"
 
-  dns_name = "images.${var.dns_name}"
+  dns_domain = "${var.dns_name}"
   dns_data = [
     "ghs.googlehosted.com.",
   ]

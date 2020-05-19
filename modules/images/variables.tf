@@ -6,7 +6,7 @@ variable "bucket_location" {
   type = "string"
 }
 
-variable "dns_name" {
+variable "dns_domain" {
   type = "string"
 }
 

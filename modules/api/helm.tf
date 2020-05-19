@@ -55,7 +55,7 @@ resource "helm_release" "api" {
 
   set_string {
     name  = "ingress.hosts[0]"
-    value = "${var.dns_name}"
+    value = "${local.dns_name}"
   }
 
   set_string {

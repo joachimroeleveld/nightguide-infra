@@ -92,6 +92,13 @@ resource "kubernetes_secret" "website_env" {
   }
 
   data {
-    "NODE_ENV" = "${data.external.website_env.result["NODE_ENV"]}"
+    PORT = "8080"
+    NODE_ENV = "${data.external.website_env.result["NODE_ENV"]}"
+    SENTRY_DSN = "${data.external.website_env.result["SENTRY_DSN"]}"
+    NG_API_HOST = "${data.external.website_env.result["NG_API_HOST"]}"
+    NG_API_TOKEN = "${data.external.website_env.result["NG_API_TOKEN"]}"
+    STRIPE_SECRET_KEY = "${data.external.website_env.result["STRIPE_SECRET_KEY"]}"
+    STRIPE_WEBHOOK_SECRET = "${data.external.website_env.result["STRIPE_WEBHOOK_SECRET"]}"
+    SENDGRID_API_KEY = "${data.external.website_env.result["SENDGRID_API_KEY"]}"
   }
 }

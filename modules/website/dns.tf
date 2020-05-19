@@ -1,3 +1,7 @@
+locals {
+  dns_name = "${var.dns_domain}"
+}
+
 resource "google_compute_global_address" "website" {
   name = "website"
 }
@@ -8,7 +12,7 @@ resource "google_compute_managed_ssl_certificate" "website" {
   name = "website"
 
   managed {
-    domains = ["${var.dns_name}"]
+    domains = ["${local.dns_name}"]
   }
 }
 
@@ -18,12 +22,12 @@ resource "google_compute_managed_ssl_certificate" "website_www" {
   name = "website-www"
 
   managed {
-    domains = ["www.${var.dns_name}"]
+    domains = ["www.${local.dns_name}"]
   }
 }
 
 resource "google_dns_record_set" "website" {
-  name = "${var.dns_name}."
+  name = "${local.dns_name}."
   type = "A"
   ttl  = 300
 
@@ -33,11 +37,11 @@ resource "google_dns_record_set" "website" {
 }
 
 resource "google_dns_record_set" "website_www" {
-  name = "www.${var.dns_name}."
+  name = "www.${local.dns_name}."
   type = "CNAME"
   ttl  = 300
 
   managed_zone = "${var.dns_zone}"
 
-  rrdatas = ["${var.dns_name}."]
+  rrdatas = ["${local.dns_name}."]
 }

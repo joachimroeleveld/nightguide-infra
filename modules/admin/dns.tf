@@ -1,3 +1,7 @@
+locals {
+  dns_name = "admin.${var.dns_domain}"
+}
+
 resource "google_compute_global_address" "admin" {
   name = "admin"
 }
@@ -8,12 +12,12 @@ resource "google_compute_managed_ssl_certificate" "admin" {
   name = "admin"
 
   managed {
-    domains = ["${var.dns_name}"]
+    domains = ["${local.dns_name}"]
   }
 }
 
 resource "google_dns_record_set" "admin" {
-  name = "${var.dns_name}."
+  name = "${local.dns_name}."
   type = "A"
   ttl  = 300
 

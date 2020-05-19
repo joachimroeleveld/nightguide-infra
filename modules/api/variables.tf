@@ -10,7 +10,7 @@ variable "app_version" {
   type = "string"
 }
 
-variable "dns_name" {
+variable "dns_domain" {
   type = "string"
 }
 
@@ -59,5 +59,9 @@ variable "cloudbuild_sa" {
 }
 
 variable "images_bucket" {
+  type = "string"
+}
+
+variable "bucket_location" {
   type = "string"
 }

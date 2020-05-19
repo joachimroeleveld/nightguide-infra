@@ -1,3 +1,7 @@
+locals {
+  dns_name = "images.${var.dns_domain}"
+}
+
 resource "google_storage_bucket" "images" {
   name     = "${var.bucket_name}"
   location = "${var.bucket_location}"
@@ -11,11 +15,10 @@ resource "google_storage_bucket_iam_binding" "images_public" {
 }
 
 resource "google_dns_record_set" "images" {
-  name = "${var.dns_name}."
+  name = "${local.dns_name}."
   type = "CNAME"
   ttl  = 300
 
   managed_zone = "${var.dns_zone}"
-
   rrdatas = ["${var.dns_data}"]
 }

@@ -1,5 +1,9 @@
+locals {
+  dns_name = "api.${var.dns_domain}"
+}
+
 resource "google_dns_record_set" "api" {
-  name = "${var.dns_name}."
+  name = "${local.dns_name}."
   type = "A"
   ttl  = 300
 
@@ -18,6 +22,6 @@ resource "google_compute_managed_ssl_certificate" "api" {
   name = "api"
 
   managed {
-    domains = ["${var.dns_name}"]
+    domains = ["${local.dns_name}"]
   }
 }

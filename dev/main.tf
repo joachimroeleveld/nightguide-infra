@@ -30,11 +30,9 @@ module "images" {
   bucket_location = "${var.bucket_location}"
   bucket_name     = "images.${var.dns_name}"
 
-  dns_name = "images.${var.dns_name}"
-
+  dns_domain = "${var.dns_name}"
   dns_data = [
     "ghs.googlehosted.com.",
   ]
-
   dns_zone = "${google_dns_managed_zone.main.name}"
 }
